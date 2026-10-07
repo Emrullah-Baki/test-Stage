@@ -17,69 +17,7 @@
          SIDEBAR
     ========================== -->
 
-    <aside class="sidebar">
-
-        <div class="sidebar-logo">
-            <div class="logo-icon">
-                🎓
-            </div>
-
-            <div>
-                <h1>StudentenBeheer</h1>
-                <span>Docenten Dashboard</span>
-            </div>
-        </div>
-
-
-        <nav class="sidebar-navigation">
-
-            <a href="#" class="nav-item active">
-                <span class="nav-icon">⌂</span>
-                <span>Dashboard</span>
-            </a>
-
-            <a href="#" class="nav-item">
-                <span class="nav-icon">♧</span>
-                <span>Studenten</span>
-            </a>
-
-            <a href="#" class="nav-item">
-                <span class="nav-icon">＋</span>
-                <span>Registreren</span>
-            </a>
-
-            <a href="#" class="nav-item">
-                <span class="nav-icon">♧</span>
-                <span>Klassen</span>
-            </a>
-
-            <a href="#" class="nav-item">
-                <span class="nav-icon">▥</span>
-                <span>Rapporten</span>
-            </a>
-
-            <a href="#" class="nav-item">
-                <span class="nav-icon">⚙</span>
-                <span>Instellingen</span>
-            </a>
-
-        </nav>
-
-
-        <div class="sidebar-bottom">
-
-            <div class="leaf-icon">
-                🌱
-            </div>
-
-            <div>
-                <p>Een rustige omgeving</p>
-                <span>voor beter leren</span>
-            </div>
-
-        </div>
-
-    </aside>
+    @include('partials.teacher-sidebar', ['activePage' => 'dashboard'])
 
 
     <!-- =========================
@@ -90,41 +28,16 @@
 
         <!-- HEADER -->
 
-        <header class="topbar">
-
-            <div></div>
-
-            <div class="profile-area">
-
-                <button class="notification-button">
-                    ♧
-                </button>
-
-                <div class="profile-divider"></div>
-
-                <div class="profile">
-
-                    <div class="profile-avatar">
-                        J
-                    </div>
-
-                    <div class="profile-information">
-                        <strong>J. de Vries</strong>
-                        <span>Docent</span>
-                    </div>
-
-                    <span class="profile-arrow">⌄</span>
-
-                </div>
-
-            </div>
-
-        </header>
+        @include('partials.teacher-topbar')
 
 
         <!-- CONTENT -->
 
         <div class="content">
+
+            @if (session('success'))
+                <div class="success-message" role="status">{{ session('success') }}</div>
+            @endif
 
             <!-- WELCOME -->
 
@@ -170,11 +83,11 @@
                     </span>
 
                     <strong class="stat-number">
-                        24
+                        {{ $studentCount }}
                     </strong>
 
                     <span class="stat-change positive">
-                        ↑ 3 deze week
+                        Geregistreerde studenten
                     </span>
 
                 </div>
@@ -191,11 +104,11 @@
                     </span>
 
                     <strong class="stat-number">
-                        5
+                        {{ $newStudentCount }}
                     </strong>
 
                     <span class="stat-change positive">
-                        ↑ 2 deze week
+                        Deze week
                     </span>
 
                 </div>
@@ -208,15 +121,15 @@
                     </div>
 
                     <span class="stat-title">
-                        Actieve klassen
+                        Verschillende klassen
                     </span>
 
                     <strong class="stat-number">
-                        4
+                        {{ $classCount }}
                     </strong>
 
                     <span class="stat-change neutral">
-                        Geen wijziging
+                        Unieke klassen
                     </span>
 
                 </div>
@@ -229,15 +142,15 @@
                     </div>
 
                     <span class="stat-title">
-                        Afgeronde registraties
+                        Inschrijvingen deze maand
                     </span>
 
                     <strong class="stat-number">
-                        18
+                        {{ $monthlyStudentCount }}
                     </strong>
 
                     <span class="stat-change positive">
-                        ↑ 5 deze week
+                        Deze maand
                     </span>
 
                 </div>
@@ -269,8 +182,8 @@
                                 Recente studenten
                             </h3>
 
-                            <a href="#">
-                                Bekijk alle →
+                            <a href="{{ route('students.create') }}">
+                                Student toevoegen →
                             </a>
 
                         </div>
@@ -294,136 +207,27 @@
                                 </thead>
 
                                 <tbody>
-
-                                <tr>
-
-                                    <td>
-                                        <div class="student-name">
-                                            <div class="student-avatar">S</div>
-                                            Sophie de Jong
-                                        </div>
-                                    </td>
-
-                                    <td>ST00123</td>
-
-                                    <td>Klas 1A</td>
-
-                                    <td>
-                                        <span class="status active">
-                                            Actief
-                                        </span>
-                                    </td>
-
-                                    <td>12-04-2025</td>
-
-                                    <td class="row-arrow">›</td>
-
-                                </tr>
-
-
-                                <tr>
-
-                                    <td>
-                                        <div class="student-name">
-                                            <div class="student-avatar">R</div>
-                                            Ruben Visser
-                                        </div>
-                                    </td>
-
-                                    <td>ST00124</td>
-
-                                    <td>Klas 1B</td>
-
-                                    <td>
-                                        <span class="status active">
-                                            Actief
-                                        </span>
-                                    </td>
-
-                                    <td>11-04-2025</td>
-
-                                    <td class="row-arrow">›</td>
-
-                                </tr>
-
-
-                                <tr>
-
-                                    <td>
-                                        <div class="student-name">
-                                            <div class="student-avatar">E</div>
-                                            Emma Bakker
-                                        </div>
-                                    </td>
-
-                                    <td>ST00125</td>
-
-                                    <td>Klas 2A</td>
-
-                                    <td>
-                                        <span class="status active">
-                                            Actief
-                                        </span>
-                                    </td>
-
-                                    <td>10-04-2025</td>
-
-                                    <td class="row-arrow">›</td>
-
-                                </tr>
-
-
-                                <tr>
-
-                                    <td>
-                                        <div class="student-name">
-                                            <div class="student-avatar">N</div>
-                                            Noah Jansen
-                                        </div>
-                                    </td>
-
-                                    <td>ST00126</td>
-
-                                    <td>Klas 2B</td>
-
-                                    <td>
-                                        <span class="status inactive">
-                                            Inactief
-                                        </span>
-                                    </td>
-
-                                    <td>09-04-2025</td>
-
-                                    <td class="row-arrow">›</td>
-
-                                </tr>
-
-
-                                <tr>
-
-                                    <td>
-                                        <div class="student-name">
-                                            <div class="student-avatar">L</div>
-                                            Lotte Smit
-                                        </div>
-                                    </td>
-
-                                    <td>ST00127</td>
-
-                                    <td>Klas 3A</td>
-
-                                    <td>
-                                        <span class="status active">
-                                            Actief
-                                        </span>
-                                    </td>
-
-                                    <td>08-04-2025</td>
-
-                                    <td class="row-arrow">›</td>
-
-                                </tr>
-
+                                @forelse ($students as $student)
+                                    <tr>
+                                        <td>
+                                            <div class="student-name">
+                                                <div class="student-avatar">{{ mb_substr($student->name, 0, 1) }}</div>
+                                                {{ $student->name }}
+                                            </div>
+                                        </td>
+                                        <td>{{ $student->student_number }}</td>
+                                        <td>{{ $student->class_name }}</td>
+                                        <td>
+                                            <span class="status active">Actief</span>
+                                        </td>
+                                        <td>{{ $student->created_at->format('d-m-Y') }}</td>
+                                        <td class="row-arrow">›</td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="6" class="empty-table-message">Er zijn nog geen studenten geregistreerd.</td>
+                                    </tr>
+                                @endforelse
                                 </tbody>
 
                             </table>
@@ -443,8 +247,8 @@
                                 Laatste registraties
                             </h3>
 
-                            <a href="#">
-                                Bekijk alle →
+                            <a href="{{ route('students.create') }}">
+                                Student toevoegen →
                             </a>
 
                         </div>
@@ -467,67 +271,19 @@
                                 </thead>
 
                                 <tbody>
-
-                                <tr>
-                                    <td>12-04-2025</td>
-                                    <td>Sophie de Jong</td>
-                                    <td>Klas 1A</td>
-                                    <td>
-                                        <span class="status active">
-                                            Geregistreerd
-                                        </span>
-                                    </td>
-                                    <td class="row-arrow">›</td>
-                                </tr>
-
-                                <tr>
-                                    <td>11-04-2025</td>
-                                    <td>Ruben Visser</td>
-                                    <td>Klas 1B</td>
-                                    <td>
-                                        <span class="status active">
-                                            Geregistreerd
-                                        </span>
-                                    </td>
-                                    <td class="row-arrow">›</td>
-                                </tr>
-
-                                <tr>
-                                    <td>10-04-2025</td>
-                                    <td>Emma Bakker</td>
-                                    <td>Klas 2A</td>
-                                    <td>
-                                        <span class="status active">
-                                            Geregistreerd
-                                        </span>
-                                    </td>
-                                    <td class="row-arrow">›</td>
-                                </tr>
-
-                                <tr>
-                                    <td>09-04-2025</td>
-                                    <td>Noah Jansen</td>
-                                    <td>Klas 2B</td>
-                                    <td>
-                                        <span class="status inactive">
-                                            Geannuleerd
-                                        </span>
-                                    </td>
-                                    <td class="row-arrow">›</td>
-                                </tr>
-
-                                <tr>
-                                    <td>08-04-2025</td>
-                                    <td>Lotte Smit</td>
-                                    <td>Klas 3A</td>
-                                    <td>
-                                        <span class="status active">
-                                            Geregistreerd
-                                        </span>
-                                    </td>
-                                    <td class="row-arrow">›</td>
-                                </tr>
-
+                                @forelse ($students as $student)
+                                    <tr>
+                                        <td>{{ $student->created_at->format('d-m-Y') }}</td>
+                                        <td>{{ $student->name }}</td>
+                                        <td>{{ $student->class_name }}</td>
+                                        <td><span class="status active">Geregistreerd</span></td>
+                                        <td class="row-arrow">›</td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="5" class="empty-table-message">Er zijn nog geen registraties.</td>
+                                    </tr>
+                                @endforelse
                                 </tbody>
 
                             </table>
@@ -562,7 +318,7 @@
                             Voeg snel een nieuwe student toe aan het systeem.
                         </p>
 
-                        <a href="#" class="primary-button">
+                        <a href="{{ route('students.create') }}" class="primary-button">
                             Student registreren
                             <span>→</span>
                         </a>
@@ -578,9 +334,9 @@
                             Snel naar
                         </h3>
 
-                        <a href="#">
+                        <a href="{{ route('students.create') }}">
                             <span class="quick-icon">♧</span>
-                            <span>Alle studenten</span>
+                            <span>Nieuwe student toevoegen</span>
                             <span>›</span>
                         </a>
 
