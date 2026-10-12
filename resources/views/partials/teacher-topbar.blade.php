@@ -1,3 +1,7 @@
+<script>
+    document.documentElement.dataset.theme = localStorage.getItem('studentenbeheer-theme') === 'dark' ? 'dark' : 'light';
+</script>
+
 <header class="topbar">
     <div></div>
     <div class="profile-area">
