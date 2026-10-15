@@ -13,33 +13,17 @@
 
 <div class="dashboard">
 
-    <!-- =========================
-         SIDEBAR
-    ========================== -->
-
     @include('partials.teacher-sidebar', ['activePage' => 'dashboard'])
-
-
-    <!-- =========================
-         MAIN
-    ========================== -->
 
     <main class="main-content">
 
-        <!-- HEADER -->
-
         @include('partials.teacher-topbar')
-
-
-        <!-- CONTENT -->
 
         <div class="content">
 
             @if (session('success'))
                 <div class="success-message" role="status">{{ session('success') }}</div>
             @endif
-
-            <!-- WELCOME -->
 
             <section class="welcome-section">
 
@@ -64,11 +48,6 @@
                 </div>
 
             </section>
-
-
-            <!-- =========================
-                 STATISTICS
-            ========================== -->
 
             <section class="statistics-grid">
 
@@ -157,22 +136,9 @@
 
             </section>
 
-
-            <!-- =========================
-                 DASHBOARD GRID
-            ========================== -->
-
             <div class="dashboard-grid">
 
-
-                <!-- =========================
-                     LEFT COLUMN
-                ========================== -->
-
                 <div class="left-column">
-
-
-                    <!-- RECENT STUDENTS -->
 
                     <section class="dashboard-card">
 
@@ -236,9 +202,6 @@
 
                     </section>
 
-
-                    <!-- LAST REGISTRATIONS -->
-
                     <section class="dashboard-card">
 
                         <div class="card-header">
@@ -294,15 +257,7 @@
 
                 </div>
 
-
-                <!-- =========================
-                     RIGHT COLUMN
-                ========================== -->
-
                 <aside class="right-column">
-
-
-                    <!-- REGISTER -->
 
                     <section class="action-card">
 
@@ -324,9 +279,6 @@
                         </a>
 
                     </section>
-
-
-                    <!-- QUICK LINKS -->
 
                     <section class="dashboard-card quick-links">
 
@@ -359,9 +311,6 @@
                         </a>
 
                     </section>
-
-
-                    <!-- HELP -->
 
                     <section class="help-card">
 
